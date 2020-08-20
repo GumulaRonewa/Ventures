@@ -29,8 +29,8 @@ router.get('/:id', async (req, res) => {
   res.status(200).send(business);
 });
 
-router.get("/profile", auth, async (req, res) => {
-  const business = await Business.find({ _id: req.business._id }).select(
+router.get("/profile/:email", auth, async (req, res) => {
+  const business = await Business.find({ businessEmail: req.params.email }).select(
     "-password"
   );
 
